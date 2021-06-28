@@ -1,9 +1,6 @@
 package com.example.demo.entities;
 
 import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -18,10 +15,20 @@ public class Categorie implements Serializable {
     private long id;
     private String nom_Categorie;
     private int quantite_Categorie;
+    @Transient
     private Timestamp date_Creation;
+    @Transient
     private Timestamp date_Modification;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "idCategorie", referencedColumnName = "id") // we need to duplicate the physical information
+    @JoinColumn(name = "id_Categorie", referencedColumnName = "id") // we need to duplicate the physical information
     private List<Produit> produits;
 
+    public Categorie(String nom_Categorie, int quantite_Categorie) {
+        this.nom_Categorie=nom_Categorie;
+        this.quantite_Categorie=quantite_Categorie;
+    }
+
+    public Categorie() {
+
+    }
 }

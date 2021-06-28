@@ -1,45 +1,35 @@
-package com.example.demo;
+package com.example.demo.Controller;
 
 import com.example.demo.repository.CategorieRepository;
 import com.example.demo.repository.ProduitRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class Demo1ApplicationTests {
+import static org.junit.jupiter.api.Assertions.*;
+
+class CategorieControllerTest {
     @Autowired
     private ProduitRepository produitRepository;
     @Autowired
     private CategorieRepository categorieRepository;
 
-
-
     @Test
-    public void testFindProduit(){
-
-
-
-    }
-    @Test
-    public void testUpdateProduit()
-    {
-
-    }
-    @Test
-    public void testDeleteProduit()
-    {
-
-    produitRepository.deleteById(1L);
-
+    void getAllcategories() {
     }
 
     @Test
-    public void testFindAllProduits()
-    {
-
-
+    void categorieAjoutCat() {
     }
 
+    @Test
+    void getCategoryById() {
+    }
 
+    @Test
+    void deleteCategorie() {
+    }
+
+    @Test
+    void updateCategorie() {
+    }
 }

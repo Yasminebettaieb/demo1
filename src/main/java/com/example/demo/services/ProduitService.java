@@ -1,6 +1,4 @@
 package com.example.demo.services;
-
-import com.example.demo.entities.Categorie;
 import com.example.demo.entities.Produit;
 
 import java.util.List;

@@ -17,11 +17,13 @@ public class Produit {
     private int quantite_Produit;
     private Boolean disponible;
 
+    @Transient
     private Timestamp date_Creation;
 
+    @Transient
     private Timestamp date_Modification;
     @ManyToOne
-    @JoinColumn(name = "idCategorie", insertable = true, updatable = true)
+    @JoinColumn(name = "id_Categorie")
     @JsonIgnore
     private Categorie categorie;
 

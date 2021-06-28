@@ -32,13 +32,15 @@ public class ProduitController {
     }
     @PostMapping("/produits/{id}")
     public Produit AjoutproduitCat( @RequestBody Produit produit ,@PathVariable(value = "id") long idcat) {
-        {   Categorie categorie = categorieRepository.findById(idcat).get();
+         if (categorieRepository.findById(idcat).isPresent()) {
+            Categorie categorie = categorieRepository.findById(idcat).get();
             produit.setDate_Creation(new Timestamp(System.currentTimeMillis()));
              List <Produit> p =categorie.getProduits();
              p.add(produit);
              produit.setCategorie(categorie);
             return produitRepository.save(produit);
         }
+        else return null;
     }
     @GetMapping("/produits/{id}")
     public Produit getProduitbyId(@PathVariable(value = "id") long Produitid) {
@@ -50,6 +52,7 @@ public class ProduitController {
     }
     @PutMapping("/produits/{id}")
     public Produit updateProduit(@RequestBody  Produit p1, @PathVariable long id) {
+        if(produitRepository.findById(id).isPresent()){
         Produit p = produitRepository.findById(id).get();
         if (p1.getNom_Produit() != null)
             p.setNom_Produit(p1.getNom_Produit());
@@ -59,8 +62,7 @@ public class ProduitController {
         if (p1.getDisponible() != null)
             p.setDisponible(p1.getDisponible());
         p.setDate_Modification(new Timestamp(System.currentTimeMillis()));
-        return produitRepository.save(p);
-
-
+        return produitRepository.save(p);}
+        else return  null;
     }
 }

@@ -1,12 +1,12 @@
 package com.example.demo.Controller;
 
 import com.example.demo.entities.Categorie;
-import com.example.demo.entities.Produit;
 import com.example.demo.repository.CategorieRepository;
 import com.example.demo.services.CategorieServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -16,19 +16,17 @@ import java.util.List;
 @RequestMapping("/")
 public class CategorieController {
     private final CategorieRepository categorieRepository;
-    private final ProduitController produitController;
     private final CategorieServiceImpl categorieService;
 
     @Autowired
-    public CategorieController(CategorieRepository categorieRepository, ProduitController produitController, CategorieServiceImpl categorieService) {
+    public CategorieController(CategorieRepository categorieRepository,   CategorieServiceImpl categorieService) {
         this.categorieRepository = categorieRepository;
-        this.produitController = produitController;
         this.categorieService = categorieService;
     }
 
 
     @GetMapping("/categories")
-    public List<Categorie> getAllcategories() {
+    public List<Categorie> GetAllCategories() {
         return categorieRepository.findAll();
     }
 
@@ -48,20 +46,23 @@ public class CategorieController {
 
     @DeleteMapping("/categories/{id}")
     public void DeleteCategorie(@PathVariable(value = "id") long CategoryId) {
-          Categorie categorie = categorieRepository.findById(CategoryId).get();
-          categorieRepository.delete(categorie);
+           if (categorieRepository.findById(CategoryId).isPresent())
+           {Categorie categorie = categorieRepository.findById(CategoryId).get();
+          categorieRepository.delete(categorie);}
 
     }
 
     @PutMapping("/categories/{id}")
     public Categorie updateCategorie(@RequestBody Categorie cat1, @PathVariable long id) {
-        Categorie c = categorieRepository.findById(id).get();
-        if (cat1.getNom_Categorie() != null)
-            c.setNom_Categorie(cat1.getNom_Categorie());
-        if (cat1.getQuantite_Categorie() != 0)
-            c.setQuantite_Categorie(cat1.getQuantite_Categorie());
-        c.setDate_Modification(new Timestamp(System.currentTimeMillis()));
-        return categorieRepository.save(c);
+        if (categorieRepository.findById(id).isPresent()) {
+            Categorie c = categorieRepository.findById(id).get();
+            if (cat1.getNom_Categorie() != null)
+                c.setNom_Categorie(cat1.getNom_Categorie());
+            if (cat1.getQuantite_Categorie() != 0)
+                c.setQuantite_Categorie(cat1.getQuantite_Categorie());
+            c.setDate_Modification(new Timestamp(System.currentTimeMillis()));
+            return categorieRepository.save(c);
 
+        } else return null;
     }
 }
