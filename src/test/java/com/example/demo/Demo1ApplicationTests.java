@@ -1,8 +1,9 @@
 package com.example.demo;
 
-import com.example.demo.repository.CategorieRepository;
 import com.example.demo.repository.ProduitRepository;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -10,8 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class Demo1ApplicationTests {
     @Autowired
     private ProduitRepository produitRepository;
-    @Autowired
-    private CategorieRepository categorieRepository;
+
 
 
 
@@ -30,7 +30,8 @@ class Demo1ApplicationTests {
     public void testDeleteProduit()
     {
 
-    produitRepository.deleteById(1L);
+    produitRepository.deleteById(29L);
+    assertEquals(2,produitRepository.findAll().size());
 
     }
 

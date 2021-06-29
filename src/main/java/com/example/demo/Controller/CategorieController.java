@@ -1,5 +1,4 @@
 package com.example.demo.Controller;
-
 import com.example.demo.entities.Categorie;
 import com.example.demo.repository.CategorieRepository;
 import com.example.demo.services.CategorieServiceImpl;
@@ -26,12 +25,12 @@ public class CategorieController {
 
 
     @GetMapping("/categories")
-    public List<Categorie> GetAllCategories() {
+    public List<Categorie> getAllCategories() {
         return categorieRepository.findAll();
     }
 
     @PostMapping("/categorieajout")
-    public Categorie CategorieAjoutCat(@Validated @RequestBody Categorie c) {
+    public Categorie ajoutCategorie(@Validated @RequestBody Categorie c) {
         c.setDate_Creation(new Timestamp(System.currentTimeMillis()));
         return categorieRepository.save(c);
     }
@@ -47,8 +46,8 @@ public class CategorieController {
     @DeleteMapping("/categories/{id}")
     public void DeleteCategorie(@PathVariable(value = "id") long CategoryId) {
            if (categorieRepository.findById(CategoryId).isPresent())
-           {Categorie categorie = categorieRepository.findById(CategoryId).get();
-          categorieRepository.delete(categorie);}
+           {Categorie var = categorieRepository.findById(CategoryId).get();
+          categorieRepository.delete(var);}
 
     }
 
