@@ -7,7 +7,6 @@ import com.example.demo.repository.ProduitRepository;
 import com.example.demo.services.ProduitServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -31,24 +30,24 @@ public class ProduitController {
         return  produitRepository.findAll();
     }
     @PostMapping("/produits/{id}")
-    public Produit AjoutproduitCat( @RequestBody Produit produit ,@PathVariable(value = "id") long idcat) {
+    public Produit ajoutProduit( @RequestBody Produit produit ,@PathVariable(value = "id") long idcat) {
          if (categorieRepository.findById(idcat).isPresent()) {
-            Categorie categorie = categorieRepository.findById(idcat).get();
+            Categorie var = categorieRepository.findById(idcat).get();
             produit.setDate_Creation(new Timestamp(System.currentTimeMillis()));
-             List <Produit> p =categorie.getProduits();
+             List <Produit> p =var.getProduits();
              p.add(produit);
-             produit.setCategorie(categorie);
+             produit.setCategorie(var);
             return produitRepository.save(produit);
         }
         else return null;
     }
     @GetMapping("/produits/{id}")
-    public Produit getProduitbyId(@PathVariable(value = "id") long Produitid) {
-        return produitService.getProduit(Produitid);
+    public Produit getProduitbyId(@PathVariable(value = "id") long produitid) {
+        return produitService.getProduit(produitid);
     }
     @DeleteMapping("/produits/{id}")
-    public void DeleteProduit (@PathVariable (value = "id" ) long Produitid) {
-        produitService.deleteProduitById(Produitid);
+    public void deleteProduit (@PathVariable (value = "id" ) long produitid) {
+        produitService.deleteProduitById(produitid);
     }
     @PutMapping("/produits/{id}")
     public Produit updateProduit(@RequestBody  Produit p1, @PathVariable long id) {

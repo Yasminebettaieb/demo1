@@ -15,12 +15,6 @@ public class ProduitServiceImpl implements ProduitService{
         this.produitRepository = produitRepository;
     }
 
-    @Override
-    public Produit saveProduit(Produit p) {
-        return produitRepository.save(p);
-    }
-
-    @Override
     public Produit updateProduit(Produit p, long id) {
       if(produitRepository.findById(id).isPresent()){
           Produit p1 =produitRepository.findById(id).get();
@@ -36,10 +30,6 @@ public class ProduitServiceImpl implements ProduitService{
         }
 
 
-    @Override
-    public void deleteProduit(Produit p) {
-  produitRepository.delete(p);
-    }
 
 
     public void deleteProduitById(long id) {
@@ -54,8 +44,4 @@ produitRepository.deleteById(id);
            return null;
     }
 
-    @Override
-    public List<Produit> getAllProduits() {
-        return produitRepository.findAll();
-    }
 }

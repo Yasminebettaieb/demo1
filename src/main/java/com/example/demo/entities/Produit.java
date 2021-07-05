@@ -1,11 +1,8 @@
 package com.example.demo.entities;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
-
 @Data
 @Table(name = "produit")
 @Entity
