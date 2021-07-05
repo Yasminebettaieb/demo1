@@ -1,11 +1,11 @@
 package com.example.demo.Controller;
+
 import com.example.demo.entities.Categorie;
 import com.example.demo.repository.CategorieRepository;
 import com.example.demo.services.CategorieServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -44,10 +44,11 @@ public class CategorieController {
     }
 
     @DeleteMapping("/categories/{id}")
-    public void deleteCategorie(@PathVariable(value = "id") long idcat) {
-           if (categorieRepository.findById(idcat).isPresent())
-           {Categorie cat = categorieRepository.findById(idcat).get();
-          categorieRepository.delete(cat);}
+    public void DeleteCategorie(@PathVariable(value = "id") long CategoryId) {
+        if (categorieRepository.findById(CategoryId).isPresent()) {
+            Categorie var = categorieRepository.findById(CategoryId).get();
+            categorieRepository.delete(var);
+        }
 
     }
 
