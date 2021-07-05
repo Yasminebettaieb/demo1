@@ -21,7 +21,6 @@ public class Categorie implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "id_Categorie", referencedColumnName = "id") // we need to duplicate the physical information
     private List<Produit> produits;
-
     public Categorie(String nom_Categorie, int quantite_Categorie) {
         this.nom_Categorie=nom_Categorie;
         this.quantite_Categorie=quantite_Categorie;
