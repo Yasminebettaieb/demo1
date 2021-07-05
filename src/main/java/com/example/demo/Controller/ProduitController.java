@@ -32,11 +32,11 @@ public class ProduitController {
     @PostMapping("/produits/{id}")
     public Produit ajoutProduit( @RequestBody Produit produit ,@PathVariable(value = "id") long idcat) {
          if (categorieRepository.findById(idcat).isPresent()) {
-            Categorie var = categorieRepository.findById(idcat).get();
+            Categorie categorie = categorieRepository.findById(idcat).get();
             produit.setDate_Creation(new Timestamp(System.currentTimeMillis()));
-             List <Produit> p =var.getProduits();
+             List <Produit> p =categorie.getProduits();
              p.add(produit);
-             produit.setCategorie(var);
+             produit.setCategorie(categorie);
             return produitRepository.save(produit);
         }
         else return null;

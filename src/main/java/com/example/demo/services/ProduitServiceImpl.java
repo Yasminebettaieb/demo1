@@ -3,7 +3,6 @@ import com.example.demo.entities.Produit;
 import com.example.demo.repository.ProduitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.sql.Timestamp;
 import java.util.List;
 @Service
