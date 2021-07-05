@@ -44,10 +44,10 @@ public class CategorieController {
     }
 
     @DeleteMapping("/categories/{id}")
-    public void DeleteCategorie(@PathVariable(value = "id") long CategoryId) {
-        if (categorieRepository.findById(CategoryId).isPresent()) {
-            Categorie var = categorieRepository.findById(CategoryId).get();
-            categorieRepository.delete(var);
+    public void deleteCategorie(@PathVariable(value = "id") long cat) {
+        if (categorieRepository.findById(cat).isPresent()) {
+            var c = categorieRepository.findById(cat).get();
+            categorieRepository.delete(c);
         }
 
     }
