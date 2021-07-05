@@ -1,5 +1,7 @@
 package com.example.demo.entities;
+
 import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;

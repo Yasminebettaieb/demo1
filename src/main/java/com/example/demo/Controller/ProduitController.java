@@ -26,38 +26,41 @@ public class ProduitController {
     private final ProduitServiceImpl produitService;
 
     @GetMapping("/produits")
-    public List<Produit> getAllProducts(){
-        return  produitRepository.findAll();
+    public List<Produit> getAllProducts() {
+        return produitRepository.findAll();
     }
+
     @PostMapping("/produits/{id}")
-    public Produit ajoutProduit( @RequestBody Produit produit ,@PathVariable(value = "id") long idcat) {
-         if (categorieRepository.findById(idcat).isPresent()) {
+    public Produit AjoutproduitCat(@RequestBody Produit produit, @PathVariable(value = "id") long idcat) {
+        if (categorieRepository.findById(idcat).isPresent()) {
             Categorie categorie = categorieRepository.findById(idcat).get();
             produit.setDate_Creation(new Timestamp(System.currentTimeMillis()));
-             List <Produit> p =categorie.getProduits();
-             p.add(produit);
-             produit.setCategorie(categorie);
+            List<Produit> p = categorie.getProduits();
+            p.add(produit);
+            produit.setCategorie(categorie);
             return produitRepository.save(produit);
-        }
-        else return null;
+        } else return null;
     }
-    @GetMapping("/produits/{id}")
-    public Produit getProduitbyId(@PathVariable(value = "id") long produitid) {
-        return produitService.getProduit(produitid);
-    }
-    @DeleteMapping("/produits/{id}")
-    public void deleteProduit (@PathVariable (value = "id" ) long produitid) {
-        produitService.deleteProduitById(produitid);
-    }
-    @PutMapping("/produits/{id}")
-    public Produit updateProduit(@RequestBody  Produit p1, @PathVariable long id) {
-        if(produitRepository.findById(id).isPresent()){
-        Produit p = produitRepository.findById(id).get();
-        if (p1.getNom_Produit() != null)
-            p.setNom_Produit(p1.getNom_Produit());
 
-        if (p1.getQuantite_Produit() != 0)
-            p.setQuantite_Produit(p1.getQuantite_Produit());
+    @GetMapping("/produits/{id}")
+    public Produit getProduitbyId(@PathVariable(value = "id") long Produitid) {
+        return produitService.getProduit(Produitid);
+    }
+
+    @DeleteMapping("/produits/{id}")
+    public void DeleteProduit(@PathVariable(value = "id") long Produitid) {
+        produitService.deleteProduitById(Produitid);
+    }
+
+    @PutMapping("/produits/{id}")
+    public Produit updateProduit(@RequestBody Produit p1, @PathVariable long id) {
+        if (produitRepository.findById(id).isPresent()) {
+            Produit p = produitRepository.findById(id).get();
+            if (p1.getNom_Produit() != null)
+                p.setNom_Produit(p1.getNom_Produit());
+
+            if (p1.getQuantite_Produit() != 0)
+                p.setQuantite_Produit(p1.getQuantite_Produit());
         if (p1.getDisponible() != null)
             p.setDisponible(p1.getDisponible());
         p.setDate_Modification(new Timestamp(System.currentTimeMillis()));
