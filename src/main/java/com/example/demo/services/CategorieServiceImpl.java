@@ -25,7 +25,7 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
 
-    public void DeleteCategorie(long id) {
+    public void deleteCategorie(long id) {
         categorieRepository.deleteById(id);
 
     }

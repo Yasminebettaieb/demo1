@@ -8,7 +8,7 @@ public interface CategorieService {
 
     Categorie saveCategorie(Categorie c);
 
-    void DeleteCategorie(long id);
+    void deleteCategorie(long id);
 
     Categorie getCategorie(long id);
 

@@ -1,4 +1,4 @@
-package com.example.demo.Controller;
+package com.example.demo.controller;
 
 import com.example.demo.entities.Categorie;
 import com.example.demo.repository.CategorieRepository;

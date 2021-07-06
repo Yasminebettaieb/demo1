@@ -1,4 +1,4 @@
-package com.example.demo.Controller;
+package com.example.demo.controller;
 import com.example.demo.entities.Categorie;
 import com.example.demo.entities.Produit;
 import com.example.demo.repository.CategorieRepository;
@@ -30,7 +30,7 @@ public class ProduitController {
     }
 
     @PostMapping("/produits/{id}")
-    public Produit AjoutproduitCat(@RequestBody Produit produit, @PathVariable(value = "id") long idcat) {
+    public Produit ajoutproduitCat(@RequestBody Produit produit, @PathVariable(value = "id") long idcat) {
         if (categorieRepository.findById(idcat).isPresent()) {
             Categorie categorie = categorieRepository.findById(idcat).get();
             produit.setDate_Creation(new Timestamp(System.currentTimeMillis()));
@@ -42,13 +42,13 @@ public class ProduitController {
     }
 
     @GetMapping("/produits/{id}")
-    public Produit getProduitbyId(@PathVariable(value = "id") long Produitid) {
-        return produitService.getProduit(Produitid);
+    public Produit getProduitbyId(@PathVariable(value = "id") long id) {
+        return produitService.getProduit(id);
     }
 
     @DeleteMapping("/produits/{id}")
-    public void DeleteProduit(@PathVariable(value = "id") long Produitid) {
-        produitService.deleteProduitById(Produitid);
+    public void deleteProduit(@PathVariable(value = "id") long id) {
+        produitService.deleteProduitById(id);
     }
 
     @PutMapping("/produits/{id}")
