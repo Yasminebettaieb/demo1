@@ -14,6 +14,6 @@ public interface ProduitService {
 
     Produit getProduit(long id);
 
-    List<Produit> getAllProduits();
+
 
 }

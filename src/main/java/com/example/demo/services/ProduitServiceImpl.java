@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 import com.example.demo.entities.Produit;
 import com.example.demo.repository.ProduitRepository;
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,8 +58,5 @@ public class ProduitServiceImpl implements ProduitService {
             return null;
     }
 
-    @Override
-    public List<Produit> getAllProduits() {
-        return produitRepository.findAll();
-    }
+
 }
