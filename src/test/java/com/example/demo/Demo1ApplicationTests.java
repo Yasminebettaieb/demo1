@@ -12,32 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
-@SpringBootTest
-class Demo1ApplicationTests {
-    @Autowired
-    private ProduitRepository produitRepository;
-    @Autowired
-    private ProduitController produitController;
-    @Autowired
-    private CategorieRepository categorieRepository;
-    @Autowired
-    private CategorieController categorieController;
-
-     @Test
-      void ajoutProducts(){
-      
-
-     }
-    @Test
-     void ajoutCategorie(){
-
-    }
-
-    @Test
-     void deleteCategorie(){
-
-    }
-
+class Demo1ApplicationTests{
 
 
 
