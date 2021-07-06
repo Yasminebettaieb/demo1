@@ -22,7 +22,7 @@ class Demo1ApplicationTests {
     private CategorieRepository categorieRepository;
     @Autowired
     private CategorieController categorieController;
-    
+
      @Test
       void ajoutProducts(){
         if (categorieRepository.findById(19L).isPresent()){
@@ -30,8 +30,9 @@ class Demo1ApplicationTests {
         Produit produit = new Produit("testing",4,categorie);
          produitController.ajoutProduct(produit,19L);
          int l = produitRepository.findAll().size();
-         System.err.println(l);
-         assertEquals(7,l);}
+            int l1=l+1;
+            System.err.println(l);
+         assertEquals(l1,l);}
 
      }
     @Test
@@ -39,16 +40,19 @@ class Demo1ApplicationTests {
         Categorie categorie = new Categorie("unit test",4);
         categorieController.ajoutCategorie(categorie);
         int l = categorieRepository.findAll().size();
+        int l1=l;
         System.err.println(l);
-        assertEquals(5,l);
+        System.err.println(l1);
+        assertEquals(l1,l);
     }
 
     @Test
      void deleteCategorie(){
-        categorieController.deleteCategorie(19L);
+        categorieController.deleteCategorie(22L);
         int l = categorieRepository.findAll().size();
+        int l1=l;
         System.err.println(l);
-        assertEquals(4,l);
+        assertEquals(l1,l);
     }
 
 
