@@ -10,7 +10,6 @@ public interface CategorieService {
 
     void deleteCategorie(long id);
 
-    Categorie getCategorie(long id);
 
     List<Categorie> getAllCatergories();
 

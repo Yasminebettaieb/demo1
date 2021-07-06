@@ -40,7 +40,7 @@ public class CategorieController {
 
     @GetMapping("/categories/{id}")
     public Categorie getCategoryById(@PathVariable(value = "id") long categoryId) {
-        return categorieService.getCategorie(categoryId);
+        return categorieService.getCat(categoryId);
     }
 
     @DeleteMapping("/categories/{id}")

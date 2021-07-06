@@ -30,8 +30,7 @@ public class CategorieServiceImpl implements CategorieService {
 
     }
 
-    @Override
-    public Categorie getCategorie(long id) {
+     public Categorie getCat(long id) {
         if (categorieRepository.findById(id).isPresent())
             return categorieRepository.findById(id).get();
         else return null;
