@@ -26,6 +26,7 @@ public class Categorie implements Serializable {
     public Categorie(String nom_Categorie, int quantite_Categorie) {
         this.nom_Categorie=nom_Categorie;
         this.quantite_Categorie=quantite_Categorie;
+
     }
 
     public Categorie() {

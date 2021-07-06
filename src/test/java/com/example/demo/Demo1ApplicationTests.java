@@ -11,6 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.security.Timestamp;
+
 
 @SpringBootTest
 class Demo1ApplicationTests {
@@ -23,41 +25,17 @@ class Demo1ApplicationTests {
     @Autowired
     private CategorieController categorieController;
 
-     @Test
-      void ajoutProducts(){ /*
-        if (categorieRepository.findById(19L).isPresent()){
-         Categorie categorie= categorieRepository.findById(19L).get();
-        Produit produit = new Produit("testing",4,categorie);
-         produitController.ajoutProduct(produit,19L);
-         int l = produitRepository.findAll().size();
-            int l1=l+1;
-            System.err.println(l);
-         assertEquals(l1,l);}*/
 
-     }
-    @Test
-     void ajoutCategorie(){/*
-        Categorie categorie = new Categorie("unit test",4);
-        categorieController.ajoutCategorie(categorie);
-        int l = categorieRepository.findAll().size();
-        int l1=l;
-        System.err.println(l);
-        System.err.println(l1);
-        assertEquals(l1,l);*/
-    }
+
 
     @Test
-     void deleteCategorie(){ /*
-        categorieController.deleteCategorie(22L);
-        int l = categorieRepository.findAll().size();
-        int l1=l;
-        System.err.println(l);
-        assertEquals(l1,l);*/
+    void addCategory()
+    {
+        Categorie category=new Categorie();
+        category.setNom_Categorie("Phones");
+        category.setQuantite_Categorie(214);
+        categorieController.ajoutCategorie(category);
+        assertTrue(categorieRepository.findById(category.getId()).isPresent());
     }
-
-
-
-
-
 
 }
