@@ -28,14 +28,5 @@ class Demo1ApplicationTests {
 
 
 
-    @Test
-    void addCategory()
-    {
-        Categorie category=new Categorie();
-        category.setNom_Categorie("Phones");
-        category.setQuantite_Categorie(214);
-        categorieController.ajoutCategorie(category);
-        assertTrue(categorieRepository.findById(category.getId()).isPresent());
-    }
-
+    
 }
