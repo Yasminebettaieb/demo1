@@ -30,7 +30,7 @@ public class ProduitController {
     }
 
     @PostMapping("/produits/{id}")
-    public Produit ajoutproduitCat(@RequestBody Produit produit, @PathVariable(value = "id") long idcat) {
+    public Produit ajoutProduct(@RequestBody Produit produit, @PathVariable(value = "id") long idcat) {
         if (categorieRepository.findById(idcat).isPresent()) {
             Categorie categorie = categorieRepository.findById(idcat).get();
             produit.setDate_Creation(new Timestamp(System.currentTimeMillis()));
