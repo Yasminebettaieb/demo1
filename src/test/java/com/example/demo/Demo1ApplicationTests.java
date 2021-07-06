@@ -23,7 +23,20 @@ class Demo1ApplicationTests {
     @Autowired
     private CategorieController categorieController;
 
+     @Test
+      void ajoutProducts(){
+      
 
+     }
+    @Test
+     void ajoutCategorie(){
+
+    }
+
+    @Test
+     void deleteCategorie(){
+
+    }
 
 
 
