@@ -26,14 +26,7 @@ class Demo1ApplicationTests {
     {
 
     }
-    @Test
-    public void testDeleteProduit()
-    {
-
-    produitRepository.deleteById(29L);
-    assertEquals(2,produitRepository.findAll().size());
-
-    }
+    
 
     @Test
     public void testFindAllProduits()
