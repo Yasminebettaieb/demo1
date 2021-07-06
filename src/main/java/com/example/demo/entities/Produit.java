@@ -2,10 +2,10 @@ package com.example.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+
 
 @Data
 @Table(name = "produit")
@@ -23,10 +23,16 @@ public class Produit implements Serializable {
 
     @Transient
     private Timestamp date_Modification;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_Categorie")
     @JsonIgnore
     private Categorie categorie;
-
+    public Produit (String nom_Produit, int quantite_Produit, Categorie categorie)
+    {
+        this.nom_Produit=nom_Produit;
+        this.quantite_Produit=quantite_Produit;
+        this.categorie=categorie;
+    }
+    public  Produit(){}
 
 }

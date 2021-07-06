@@ -20,7 +20,7 @@ public class Categorie implements Serializable {
     private Timestamp date_Creation;
     @Transient
     private Timestamp date_Modification;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_Categorie", referencedColumnName = "id") // we need to duplicate the physical information
     private List<Produit> produits;
     public Categorie(String nom_Categorie, int quantite_Categorie) {
