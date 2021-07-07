@@ -33,16 +33,16 @@ public class CategorieController {
     }
 
     @PostMapping("/categorieajout")
-    public Categorie ajoutCategorie(@Validated @RequestBody Categorie c) {
-        c.setDate_Creation(new Timestamp(System.currentTimeMillis()));
-        if (c.getProduits() != null) {
-            List<Produit> produits = c.getProduits();
+    public Categorie ajoutCategorie(@Validated @RequestBody Categorie cat) {
+        cat.setDate_Creation(new Timestamp(System.currentTimeMillis()));
+        if (cat.getProduits() != null) {
+            List<Produit> produits = cat.getProduits();
             for (Produit item : produits) {
                 item.setDateCreation(new Timestamp(System.currentTimeMillis()));
-                produitController.ajoutProduct(item, c.getId());
+                produitController.ajoutProduct(item, cat.getId());
             }
         }
-        return categorieRepository.save(c);
+        return categorieRepository.save(cat);
     }
 
 
