@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entities.Categorie;
+import com.example.demo.entities.Produit;
 import com.example.demo.repository.CategorieRepository;
 import com.example.demo.services.CategorieServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,13 @@ import java.util.List;
 public class CategorieController {
     private final CategorieRepository categorieRepository;
     private final CategorieServiceImpl categorieService;
+    private final ProduitController produitController;
 
     @Autowired
-    public CategorieController(CategorieRepository categorieRepository,   CategorieServiceImpl categorieService) {
+    public CategorieController(CategorieRepository categorieRepository, CategorieServiceImpl categorieService, ProduitController produitController) {
         this.categorieRepository = categorieRepository;
         this.categorieService = categorieService;
+        this.produitController = produitController;
     }
 
 
@@ -32,6 +35,13 @@ public class CategorieController {
     @PostMapping("/categorieajout")
     public Categorie ajoutCategorie(@Validated @RequestBody Categorie c) {
         c.setDate_Creation(new Timestamp(System.currentTimeMillis()));
+        if (c.getProduits() != null) {
+            List<Produit> produits = c.getProduits();
+            for (Produit item : produits) {
+                item.setDateCreation(new Timestamp(System.currentTimeMillis()));
+                produitController.ajoutProduct(item, c.getId());
+            }
+        }
         return categorieRepository.save(c);
     }
 
