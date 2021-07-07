@@ -24,5 +24,11 @@ public class Produit implements Serializable {
     @JsonIgnore
     private Categorie categorie;
 
+    public Produit(String nomProduit, int quantiteProduit) {
+        this.nomProduit = nomProduit;
+        this.quantiteProduit = quantiteProduit;
+    }
 
+    public Produit() {
+    }
 }

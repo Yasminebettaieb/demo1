@@ -17,10 +17,6 @@ public class ProduitServiceImpl implements ProduitService {
         this.produitRepository = produitRepository;
     }
 
-    @Override
-    public Produit saveProduit(Produit p) {
-        return produitRepository.save(p);
-    }
 
     @Override
     public Produit updateProduit(Produit p, long id) {
