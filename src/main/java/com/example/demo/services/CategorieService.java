@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface CategorieService {
 
-    Categorie saveCategorie(Categorie c);
-
     void deleteCategorie(long id);
 
 

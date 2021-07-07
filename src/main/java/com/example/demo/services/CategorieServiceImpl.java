@@ -19,12 +19,6 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
 
-    @Override
-    public Categorie saveCategorie(Categorie c) {
-        return categorieRepository.save(c);
-    }
-
-
     public void deleteCategorie(long id) {
         categorieRepository.deleteById(id);
 
