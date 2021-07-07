@@ -19,12 +19,12 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
 
-    public void deleteCategorie(long id) {
-        categorieRepository.deleteById(id);
+    public void deleteCategorie(long idc) {
+        categorieRepository.deleteById(idc);
 
     }
 
-     public Categorie getCat(long id) {
+    public Categorie getCat(long id) {
         if (categorieRepository.findById(id).isPresent())
             return categorieRepository.findById(id).get();
         else return null;
