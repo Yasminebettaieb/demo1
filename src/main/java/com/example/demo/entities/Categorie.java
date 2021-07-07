@@ -6,9 +6,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
-
-@Table(name = "categorie")
 @Data
+@Table(name = "categorie")
 @Entity
 public class Categorie implements Serializable {
     @Id
