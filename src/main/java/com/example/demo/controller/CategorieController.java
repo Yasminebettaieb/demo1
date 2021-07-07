@@ -46,8 +46,6 @@ public class CategorieController {
     }
 
 
-
-
     @GetMapping("/categories/{id}")
     public Categorie getCategoryById(@PathVariable(value = "id") long categoryId) {
         return categorieService.getCat(categoryId);
