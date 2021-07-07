@@ -36,7 +36,7 @@ class Demo1ApplicationTests {
 
     @Test
     void ajoutCategorie() {
-        Categorie categorie = new Categorie("uniiiit", 4);
+        Categorie categorie = new Categorie("uniiiit", 4, new Timestamp(System.currentTimeMillis()));
         categorie.setDate_Creation(new Timestamp(System.currentTimeMillis()));
         categorieController.ajoutCategorie(categorie);
         assertTrue(categorieRepository.findById(categorie.getId()).isPresent());

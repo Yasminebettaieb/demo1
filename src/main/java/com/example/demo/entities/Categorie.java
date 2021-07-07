@@ -24,10 +24,10 @@ public class Categorie implements Serializable {
     @JoinColumn(name = "id_Categorie", referencedColumnName = "id") // we need to duplicate the physical information
     private List<Produit> produits;
 
-    public Categorie(String nomCategorie, int quantiteCategorie) {
+    public Categorie(String nomCategorie, int quantiteCategorie, Timestamp date_Creation) {
         this.nomCategorie = nomCategorie;
         this.quantiteCategorie = quantiteCategorie;
-
+        this.date_Creation = date_Creation;
     }
 
     public Categorie() {
