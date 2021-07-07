@@ -33,7 +33,7 @@ public class ProduitController {
     public Produit ajoutProduct(@RequestBody Produit produit, @PathVariable(value = "id") long idcat) {
         if (categorieRepository.findById(idcat).isPresent()) {
             Categorie categorie = categorieRepository.findById(idcat).get();
-            produit.setDate_Creation(new Timestamp(System.currentTimeMillis()));
+            produit.setDateCreation(new Timestamp(System.currentTimeMillis()));
             List<Produit> p = categorie.getProduits();
             p.add(produit);
             produit.setCategorie(categorie);
@@ -55,15 +55,16 @@ public class ProduitController {
     public Produit updateProduit(@RequestBody Produit p1, @PathVariable long id) {
         if (produitRepository.findById(id).isPresent()) {
             Produit p = produitRepository.findById(id).get();
-            if (p1.getNom_Produit() != null)
-                p.setNom_Produit(p1.getNom_Produit());
+            if (p1.getNomProduit() != null)
+                p.setNomProduit(p1.getNomProduit());
 
-            if (p1.getQuantite_Produit() != 0)
-                p.setQuantite_Produit(p1.getQuantite_Produit());
-        if (p1.getDisponible() != null)
-            p.setDisponible(p1.getDisponible());
-        p.setDate_Modification(new Timestamp(System.currentTimeMillis()));
-        return produitRepository.save(p);}
+            if (p1.getQuantiteProduit() != 0)
+                p.setQuantiteProduit(p1.getQuantiteProduit());
+            if (p1.getDisponible() != null)
+                p.setDisponible(p1.getDisponible());
+            p.setDateModification(new Timestamp(System.currentTimeMillis()));
+            return produitRepository.save(p);
+        }
         else return  null;
     }
 }

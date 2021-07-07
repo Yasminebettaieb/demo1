@@ -31,6 +31,7 @@ public class CategorieController {
 
     @PostMapping("/categorieajout")
     public Categorie ajoutCategorie(@Validated @RequestBody Categorie c) {
+
         c.setDate_Creation(new Timestamp(System.currentTimeMillis()));
         return categorieRepository.save(c);
     }
@@ -56,10 +57,10 @@ public class CategorieController {
     public Categorie updateCategorie(@RequestBody Categorie cat1, @PathVariable long id) {
         if (categorieRepository.findById(id).isPresent()) {
             Categorie c = categorieRepository.findById(id).get();
-            if (cat1.getNom_Categorie() != null)
-                c.setNom_Categorie(cat1.getNom_Categorie());
-            if (cat1.getQuantite_Categorie() != 0)
-                c.setQuantite_Categorie(cat1.getQuantite_Categorie());
+            if (cat1.getNomCategorie() != null)
+                c.setNomCategorie(cat1.getNomCategorie());
+            if (cat1.getQuantiteCategorie() != 0)
+                c.setQuantiteCategorie(cat1.getQuantiteCategorie());
             c.setDate_Modification(new Timestamp(System.currentTimeMillis()));
             return categorieRepository.save(c);
 

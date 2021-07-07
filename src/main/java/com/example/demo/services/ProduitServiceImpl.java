@@ -2,7 +2,6 @@ package com.example.demo.services;
 
 import com.example.demo.entities.Produit;
 import com.example.demo.repository.ProduitRepository;
-import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,14 +26,14 @@ public class ProduitServiceImpl implements ProduitService {
     public Produit updateProduit(Produit p, long id) {
         if (produitRepository.findById(id).isPresent()) {
             Produit p1 = produitRepository.findById(id).get();
-            if (p.getNom_Produit() != null)
-                p1.setNom_Produit(p.getNom_Produit());
-            if (p.getQuantite_Produit() != 0)
-                p1.setQuantite_Produit(p.getQuantite_Produit());
+            if (p.getNomProduit() != null)
+                p1.setNomProduit(p.getNomProduit());
+            if (p.getQuantiteProduit() != 0)
+                p1.setQuantiteProduit(p.getQuantiteProduit());
             if (p.getDisponible() != null) {
                 p1.setDisponible(p.getDisponible());
             }
-            p1.setDate_Modification(new Timestamp(System.currentTimeMillis()));
+            p1.setDateModification(new Timestamp(System.currentTimeMillis()));
             return produitRepository.save(p1);
         } else return null;
     }

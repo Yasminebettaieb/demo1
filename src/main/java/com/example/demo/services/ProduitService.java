@@ -1,8 +1,6 @@
 package com.example.demo.services;
 import com.example.demo.entities.Produit;
 
-import java.util.List;
-
 public interface ProduitService {
     Produit saveProduit(Produit p);
 

@@ -14,22 +14,24 @@ public class Categorie implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nom_Categorie;
-    private int quantite_Categorie;
+    private String nomCategorie;
+    private int quantiteCategorie;
     @Transient
     private Timestamp date_Creation;
     @Transient
     private Timestamp date_Modification;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_Categorie", referencedColumnName = "id") // we need to duplicate the physical information
     private List<Produit> produits;
-    public Categorie(String nom_Categorie, int quantite_Categorie) {
-        this.nom_Categorie=nom_Categorie;
-        this.quantite_Categorie=quantite_Categorie;
+
+    public Categorie(String nomCategorie, int quantiteCategorie) {
+        this.nomCategorie = nomCategorie;
+        this.quantiteCategorie = quantiteCategorie;
 
     }
 
     public Categorie() {
 
     }
+
 }
