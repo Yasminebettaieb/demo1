@@ -31,7 +31,6 @@ public class CategorieController {
 
     @PostMapping("/categorieajout")
     public Categorie ajoutCategorie(@Validated @RequestBody Categorie c) {
-
         c.setDate_Creation(new Timestamp(System.currentTimeMillis()));
         return categorieRepository.save(c);
     }
